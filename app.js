@@ -16,7 +16,7 @@ app.use("/api", api);
 // match one above, send back React's index.html file.
 app.get("*", (req, res) => {
 	console.log("Invalid url " + req.url);
-	res.sendFile(path.join(__dirname+"/client/build/index.html"));
+	res.send("404 Not Found");
 });
 
 const port = process.env.PORT || 5000;
