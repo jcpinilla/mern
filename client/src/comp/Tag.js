@@ -6,11 +6,11 @@ export default class Tag extends React.Component {
 		this.state = {
 			tag: ""
 		};
-		this.manejarCambioTag = this.manejarCambioTag.bind(this);
+		this.handleTagChange = this.handleTagChange.bind(this);
 		this.submitTag = this.submitTag.bind(this);
 	}
 
-	manejarCambioTag(e) {
+	handleTagChange(e) {
 		this.setState({
 			tag: e.target.value
 		});
@@ -24,7 +24,7 @@ export default class Tag extends React.Component {
 		return (
 			<div>
 				<span># </span>
-				<input type="text" placeholder="Enter the tag" value={this.state.tag} onChange={this.manejarCambioTag} />
+				<input type="text" placeholder="Enter the tag" value={this.state.tag} onChange={this.handleTagChange} />
 				<button type="button" onClick={this.submitTag}>Ok</button>
 			</div>
 		);

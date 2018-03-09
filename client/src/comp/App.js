@@ -1,19 +1,17 @@
 import React from "react";
 import Tag from "./Tag";
-import Contador from "./Contador";
+import Counter from "./Counter";
 import Post from "./Post";
 
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tag: "",
-			topTag: "",
-			tags: {},
+			maxTag: "",
+			maxCount: 0,
 			posts: []
 		};
 		this.submitTag = this.submitTag.bind(this);
-		this.agregarTag = this.agregarTag.bind(this);
 	}
 
 	submitTag(tag) {
@@ -25,46 +23,69 @@ export default class App extends React.Component {
 					.hashtag
 					.edge_hashtag_to_top_posts
 					.edges;
-				this.setState({
-					posts
-				});
+				this.process(tag, posts);
 			});
 	}
 
-	agregarTag(tag) {
-		let tags = this.state.tags;
-		if(!(tag in tags)) {
-			tags.tag = 0;
+	process(searchTag, posts) {
+		let tagCount = {};
+		posts
+			.map(post =>
+				post
+					.node
+					.edge_media_to_caption
+					.edges[0]
+					.node
+					.text
+			).map(text => {
+				let textTags = [];
+				for (let w of text.split(" ")) {
+					if (w.startsWith("#")) {
+						textTags.push(w.substring(1));
+					}
+				}
+				return textTags;
+			}).forEach(tags => {
+				for (let tag of tags) {
+					if (!(tag in tagCount)) {
+						tagCount[tag] = 0;
+					}
+					tagCount[tag] += 1;
+				}
+			});
+		let maxTag = "";
+		let maxCount = 0;
+		for (let tag in tagCount) {
+			if (tag !== searchTag && tagCount[tag] > maxCount) {
+				maxTag = tag;
+				maxCount = tagCount[tag];
+			}
 		}
-		tags.tag += 1;
 		this.setState({
-			tags
+			maxTag,
+			maxCount,
+			posts
 		});
 	}
 
 	render() {
-		let tags = this.state.tags;
-		let max = 0;
-		let maxTag = "";
-		for(let tag in tags) {
-			if (tags[tag] > max) {
-				maxTag = tag;
-				max = tags[tag];
-			}
-		}
 		return (
 			<div>
 				<Tag 
 					submitTag={this.submitTag} />
-				<Contador
-					tag={maxTag}
-					contador={max} />
 				{
-					this.state.posts.map(post => 
-						<Post
-							agregarTag={this.agregarTag}
-							post={post} />
-					)
+					this.state.maxTag !== "" &&
+					<div>
+						<Counter
+							tag={this.state.maxTag}
+							count={this.state.maxCount} />
+						{
+							this.state.posts.map(post =>
+								<Post
+									post={post}	/>
+							)
+						}
+					</div>
 				}
 			</div>
 		);
