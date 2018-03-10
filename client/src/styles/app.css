@@ -1,10 +1,11 @@
 body {
 	margin: 40px 30px;
-	background-color: #e8eaef;
+	background-color: #fafafa;
 }
 
 .card {
-	width: 200px;
+	width: 350px;
+	height: 500px;
 	margin: 10px;
 	border-radius: 30px;
 }
