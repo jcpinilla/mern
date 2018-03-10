@@ -1,4 +1,4 @@
-# SurfInsta
+# Surfinsta
 
 With this app you will be able to surf through Instagram tags. You never know where you will end up!
 You can search for a tag or select it from the tags that other users (or even you) have searched previously. After you select the tag, you will be presented with the most frequent tag in the popular posts that were found by Instagram. You can also continue surfing by clicking this frequent tag.
