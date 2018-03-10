@@ -24,8 +24,8 @@ export default class Help extends React.Component {
 						this.state.showHelp &&
 						<div className="alert alert-info alert-dismissible show fade">
 							<button type="button" class="close" onClick={this.handleClick}>&times;</button>
-							<strong>Surf</strong> Instagram! Search for a tag, select it 	 from <em>Users have searched</em> or
-							click on the most frequent tag (if it's currently displayed)
+							<strong>Surf</strong> Instagram! Search for a tag, select it from <em>Users have searched</em> or
+							click on one of the frequent tags (if they are being displayed)
 						</div>
 					}
 				</div>

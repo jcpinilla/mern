@@ -12,8 +12,7 @@ export default class App extends React.Component {
 		super(props);
 		this.state = {
 			tag: "",
-			maxTag: "",
-			maxCount: 0,
+			maxTags: [],
 			posts: [],
 			history: []
 		};
@@ -84,18 +83,25 @@ export default class App extends React.Component {
 					tagCount[tag] += 1;
 				}
 			});
-		let maxTag = "";
-		let maxCount = 0;
-		for (let tag in tagCount) {
-			if (tag !== searchTag && tagCount[tag] > maxCount) {
-				maxTag = tag;
-				maxCount = tagCount[tag];
+		let maxTags = [];
+		for (let i = 0; i < 5; i++) {
+			let maxTag = "";
+			let maxCount = 0;
+			for (let tag in tagCount) {
+				if (tag !== searchTag && tagCount[tag] > maxCount) {
+					maxTag = tag;
+					maxCount = tagCount[tag];
+				}
 			}
+			maxTags.push({
+				tagName: maxTag,
+				count: maxCount
+			});
+			delete tagCount[maxTag];
 		}
 		this.setState({
 			tag: searchTag,
-			maxTag,
-			maxCount,
+			maxTags,
 			posts
 		});
 	}
@@ -116,12 +122,11 @@ export default class App extends React.Component {
 					<div className="col-lg-9">
 						<Help /><br />
 						{
-							this.state.maxTag !== "" &&
+							this.state.maxTags.length !==0 &&
 							<div>
 								<Counter
 									tag={this.state.tag}
-									maxTag={this.state.maxTag}
-									count={this.state.maxCount}
+									maxTags={this.state.maxTags}
 									submitTag={this.submitTag} /><br />
 								<Posts posts={this.state.posts}/>
 							</div>
