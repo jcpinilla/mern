@@ -67,7 +67,7 @@ export default class Post extends React.Component {
 			} else {
 				clearInterval(window.interval);
 			}
-		}, 150);
+		}, 200);
 	}
 
 	render() {
