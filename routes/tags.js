@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://localhost:27017";
+var url = "mongodb://admin:admin@ds033086.mlab.com:33086/surfinsta";
 const dbName = "surfinsta";
 
 router.get("/", (req, res) => {
