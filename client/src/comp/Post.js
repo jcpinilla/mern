@@ -14,10 +14,12 @@ export default class Post extends React.Component {
 		let likes = post.edge_liked_by.count;
 		let comments = post.edge_media_to_comment.count;
 		return (
-			<div className="text-center">
-				<img className="img-thumbnail" width="200" height="200" src={imageUrl} alt={text} />
-				<p>Likes: {likes}</p>
-				<p>Comments: {comments}</p>
+			<div className="card mx-auto">
+				<img className="card-img-top rounded" src={imageUrl} alt={text} />
+				<div className="card-body">
+					<p>Likes: {likes}</p>
+					<p>Comments: {comments}</p>
+				</div>
 			</div>
 		);
 	}

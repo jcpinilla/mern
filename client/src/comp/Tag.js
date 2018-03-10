@@ -23,8 +23,7 @@ export default class Tag extends React.Component {
 				<input
 					className="form-control"
 					type="text"
-					placeholder="Enter a hashtag"
-					
+					placeholder="Search for a tag"
 					onKeyPress={this.submitTag} />
 			</div>
 		);

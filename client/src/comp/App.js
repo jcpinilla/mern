@@ -3,6 +3,7 @@ import Tag from "./Tag";
 import Counter from "./Counter";
 import History from "./History";
 import Posts from "./Posts";
+import Help from "./Help";
 
 import "../styles/app.css";
 
@@ -113,6 +114,7 @@ export default class App extends React.Component {
 							submitTag={this.submitTag} /><br />
 					</div>
 					<div className="col-lg-9">
+						<Help /><br />
 						{
 							this.state.maxTag !== "" &&
 							<div>

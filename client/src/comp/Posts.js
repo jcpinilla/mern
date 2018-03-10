@@ -9,7 +9,7 @@ export default class Posts extends React.Component {
 					{
 						this.props.posts.map(post =>
 							<div className="col-sm-6">
-								<Post post={post.node}	/>
+								<Post post={post.node} />
 							</div>
 						)
 					}

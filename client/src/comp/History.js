@@ -5,7 +5,7 @@ export default class History extends React.Component {
 	render() {
 		return (
 			<div>
-				<p><strong>Recent searches by users:</strong></p>
+				<p><strong>Users have searched:</strong></p>
 				<ul className="list-group">
 					{
 						this.props.history
