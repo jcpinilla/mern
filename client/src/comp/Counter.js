@@ -9,6 +9,7 @@ export default class Counter extends React.Component {
 				{
 					this.props.maxTags.map(tag => 
 						<MaxTag
+							key={tag.tagName}
 							maxTag={tag.tagName}
 							count={tag.count}
 							submitTag={this.props.submitTag} />

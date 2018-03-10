@@ -13,6 +13,7 @@ export default class History extends React.Component {
 							.slice(0, 10)
 							.map(search =>
 								<Search
+									key={search.time}
 									tag={search.tag} 
 									submitTag={this.props.submitTag}/>
 							)

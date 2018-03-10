@@ -8,7 +8,9 @@ export default class Posts extends React.Component {
 				<div className="row">
 					{
 						this.props.posts.map(post =>
-							<div className="col-lg-6">
+							<div
+								key={post.node.id}
+								className="col-lg-6">
 								<Post post={post.node} />
 							</div>
 						)
