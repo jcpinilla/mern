@@ -1,0 +1,7 @@
+body {
+	margin: 40px 30px;
+}
+
+#max-tag:hover, #search-tag:hover {
+	cursor: pointer;
+}

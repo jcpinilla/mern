@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const usuarios = require("./usuarios");
+const tags = require("./tags");
 
-router.use("/usuarios", usuarios);
+router.use("/tags", tags);
 
 module.exports = router;
